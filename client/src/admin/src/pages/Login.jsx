@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button, TextField } from '@mui/material';
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,9 +11,6 @@ const Login = () => {
     // validation error
     const [emailValidateErr, setEmailValidateErr] = useState("");
     const [passwordValidateErr, setPasswordValidateErr] = useState("");
-
-    // unAuthenticate error
-    const [unAuthenticateErr, setUnAuthenticateErr] = useState("");
 
     const [loading, setLoading] = useState(false)
 
