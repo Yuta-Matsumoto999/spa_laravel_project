@@ -262,22 +262,25 @@ const Register = () => {
         setOrganizationCityValidateErr("")
         setOrganizationAddressValidateErr("")
 
-        // initialize csrf token and access register api
-        await authApi.initialCsrfToken().then((res) => {
-            authApi.register({
-                name,
-                email,
-                password,
-                password_confirmation,
-                organization_name,
-                organization_address_number,
-                organization_prefecture,
-                organization_city,
-                organization_address
-            }).then((res) => {
-                console.log(res);
-                navigate("/");
-            }).catch((err) => {
+        const accessRegisterApi = async () => {
+            try{
+                const user = await authApi.register({
+                    name,
+                    email,
+                    password,
+                    password_confirmation,
+                    organization_name,
+                    organization_address_number,
+                    organization_prefecture,
+                    organization_city,
+                    organization_address
+                })
+
+                if(user) {
+                    navigate("/")
+                }
+
+            } catch (err) {
                 setLoading(false);
 
                 const errors = Array(err.data.errors);
@@ -319,7 +322,12 @@ const Register = () => {
                         setOrganizationAddressValidateErr(error.organization_address[0]);
                     }
                 })
-            })
+            }
+        }
+
+        // initialize csrf token and access register api
+        await authApi.initialCsrfToken().then((res) => {
+            accessRegisterApi();
         }).catch((err) => {
             console.log(err);
         })

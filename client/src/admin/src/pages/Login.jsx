@@ -44,12 +44,14 @@ const Login = () => {
 
         setLoading(true);
 
-        // initialize csrf token and access login api
-        await authApi.initialCsrfToken().then((res) => {
-            authApi.login({email, password}).then((res) => {
-                console.log(res);
-                navigate("/");
-            }).catch((err) => {
+        const accessLoginApi = async () => {
+            try {
+                const user = await authApi.login({email, password});
+
+                if(user) {
+                    navigate("/")
+                }
+            } catch (err) {
                 setLoading(false);
 
                 const errors = Array(err.data.errors);
@@ -63,7 +65,12 @@ const Login = () => {
                         setPasswordValidateErr(error.password[0]);
                     }
                 })
-            })
+            }
+        }
+
+        // initialize csrf token and access login api
+        await authApi.initialCsrfToken().then((res) => {
+            accessLoginApi();
         }).catch((err) => {
             console.log(err);
         })
