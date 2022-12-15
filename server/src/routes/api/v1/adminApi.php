@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\Admin\LoginController;
 use App\Http\Controllers\Auth\Admin\RegisterController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,5 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // 認証済み管理者の判別
 Route::middleware('auth:admins')->get('/authenticate-check', function (Request $request) {
-    return response()->json(200);
+    return response()->json(Auth::guard('admins')->user());
 });
