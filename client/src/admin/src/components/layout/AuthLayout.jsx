@@ -7,6 +7,31 @@ import axiosClient from '../../api/axiosClient/axiosClient';
 import authApi from '../../api/authApi';
 
 const AuthLayout = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            await authApi.initialCsrfToken().then((res) => {
+                accessAuthCheck()
+            }).catch((err) => {
+                console.log(err)
+            });
+        }
+
+        const accessAuthCheck = async () => {
+            try {
+                const response = await authApi.authenticateCheck();
+
+                // homeへリダイレクト
+                navigate("/")
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        checkAuth();
+    }, []);
+
+
     return (
         <div>
         <Container component="main" maxWidth="xs">
@@ -19,7 +44,7 @@ const AuthLayout = () => {
             }}>
                 {/* <img src={} alt="" 
                     style={{ width: 100, height: 100, marginBottom: 3 }}/> */}
-                Admin Login
+                Admin
             </Box>
             <Outlet />
         </Container>
