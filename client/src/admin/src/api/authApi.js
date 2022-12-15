@@ -5,6 +5,7 @@ const authApi = {
     register: (params) => axiosClient.post("api/admin/v1/register", params),
     login: (params) => axiosClient.post("api/admin/v1/login", params),
     authenticateCheck: () => axiosClient.get("api/admin/v1/authenticate-check"),
+    logout: () => axiosClient.post("api/admin/v1/logout"),
 }
 
 export default authApi;
