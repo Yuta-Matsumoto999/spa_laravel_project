@@ -103,7 +103,7 @@ const Register = () => {
         } else if(newPasswordConfirmation.length < 8) {
             setPasswordConfirmationValidateErr("パスワード(確認用)は、8文字以上です。")
         } else if(newPasswordConfirmation !== password) {
-            setPasswordConfirmationValidateErr("パスワードが一致しません。")
+            setPasswordConfirmationValidateErr("パスワードが一致していません。")
         }
         setPassword_confirmation(newPasswordConfirmation);
     }
@@ -249,6 +249,8 @@ const Register = () => {
     const register = async (e) => {
         e.preventDefault();
 
+        setLoading(true);
+
         // initialize validate message
         setNameValidateErr("")
         setEmailValidateErr("")
@@ -290,7 +292,11 @@ const Register = () => {
                     }
 
                     if(error.password) {
-                        setPasswordValidateErr(error.password[0]);
+                        if(error.password[0] === "パスワードが一致していません。") {
+                            setPasswordConfirmationValidateErr("パスワードが一致していません。")
+                        } else {
+                            setPasswordValidateErr(error.password[0]);
+                        }
                     }
 
                     if(error.organization_name) {
