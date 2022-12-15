@@ -11,14 +11,6 @@ const AuthLayout = () => {
 
     useEffect(() => {
         const checkAuth = async () => {
-            await authApi.initialCsrfToken().then((res) => {
-                accessAuthCheck()
-            }).catch((err) => {
-                console.log(err)
-            });
-        }
-
-        const accessAuthCheck = async () => {
             try {
                 const response = await authApi.authenticateCheck();
 
