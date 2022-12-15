@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/login', [LoginController::class, 'login']);
-
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::middleware('auth:admins')->get('/user', function (Request $request) {
-    return "this is admin route";
+// 認証済み管理者の判別
+Route::middleware('auth:admins')->get('/authenticate-check', function (Request $request) {
+    return response()->json(200);
 });
