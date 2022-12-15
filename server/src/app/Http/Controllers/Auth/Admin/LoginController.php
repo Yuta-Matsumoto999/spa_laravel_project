@@ -45,4 +45,13 @@ class LoginController extends Controller
             return response()->json($error, 401);
         }
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admins')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json("success logout");
+    }
 }
