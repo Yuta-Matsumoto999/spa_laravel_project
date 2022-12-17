@@ -12,7 +12,7 @@ class ResetPasswordNotification extends ResetPassword
 {
     use Queueable;
 
-    private const PASSWORD_RESET_ENDPOINT = 'https://localhost:3000/upadte-password';
+    private const PASSWORD_RESET_ENDPOINT = 'https://localhost:3000/reset-password-form';
 
     protected function buildMailMessage($url): MailMessage
     {
