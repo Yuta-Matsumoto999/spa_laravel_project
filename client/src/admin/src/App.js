@@ -5,9 +5,13 @@ import AppLayout from './components/layout/AppLayout';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from '@mui/material';
 import { blue } from "@mui/material/colors";
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 import Dashboard from './pages/Dashboard';
+import PasswordReset from './pages/auth/PasswordReset';
+import SendedResetLink from './pages/auth/SendedResetLink';
+import ResetPasswordForm from './pages/auth/ResetPasswordForm';
+import CompleteResetPassword from './pages/auth/CompleteResetPassword';
 
 function App() {
   const Theme = createTheme({
@@ -40,6 +44,10 @@ function App() {
           <Route path="/" element={<AuthLayout />}>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="/reset-password" element={<PasswordReset />} />
+            <Route path='/sended-reset-link' element={<SendedResetLink />} />
+            <Route path='/reset-password-form' element={<ResetPasswordForm />} />
+            <Route path='/complete-reset-password' element={<CompleteResetPassword />} />
           </Route>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Dashboard />} />
