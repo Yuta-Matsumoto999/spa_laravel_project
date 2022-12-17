@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react'
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, TextField, ThemeProvider, Typography } from '@mui/material';
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import authApi from '../api/authApi';
+import { SocialIcon } from 'react-social-icons';
+import { FaFacebookSquare, FaTwitterSquare, FaLine, FaGoogle } from "react-icons/fa";
+import { IconContext } from 'react-icons';
+import { color } from '@mui/system';
+import { purple } from '@mui/material/colors';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -78,6 +83,7 @@ const Login = () => {
 
     return (
         <>
+        <Typography sx={{ marginBottom: "20px", fontWeight: "800", fontSize: "1.4rem" }}>Sign In</Typography>
         <Box component="form" onSubmit={login} noValidate>
             <TextField 
                 fullWidth 
@@ -108,15 +114,59 @@ const Login = () => {
                 sx={{ mt: 3, mb: 2}} 
                 fullWidth type="submit" 
                 loading={loading}
-                color="primary"
-                variant="outlined"
+                color="success"
+                variant="contained"
                 >
-                ログイン
+                Sign In
             </LoadingButton>
+            <Box sx={{ textAlign: "center" }}>
+                <Button component={Link} to="/register" sx={{ marginTop: "10px" }}>
+                    <Typography sx={{ color: "#6c3cb4", fontSize: "0.9rem", fontWeight: "600" }}>パスワードをお忘れですか？</Typography>
+                </Button>
             </Box>
-            <Button component={Link} to="/register">
-                アカウントを持っていませんか？新規作成
-            </Button>
+        </Box>
+            <Box>
+                <Typography 
+                    sx={{
+                        fontWeight: 800,
+                        margin: "10px 0",
+                        textAlign: "center"
+                    }}
+                >
+                    or
+                </Typography>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-around"
+                    }}
+                >
+                    <Button>
+                        <IconContext.Provider value={{ color: "#4267B2", size: "40px" }}>
+                            <FaFacebookSquare />
+                        </IconContext.Provider> 
+                    </Button>
+                    <Button>
+                        <IconContext.Provider value={{ color: "#1DA1F2", size: "40px" }}>
+                            <FaTwitterSquare />
+                        </IconContext.Provider> 
+                    </Button>
+                    <Button>
+                        <IconContext.Provider value={{ color: "#06c775", size: "40px" }}>
+                            <FaLine />
+                        </IconContext.Provider> 
+                    </Button>
+                    <Button>
+                        <IconContext.Provider value={{ color: "#DB4437", size: "40px" }}>
+                            <FaGoogle/>
+                        </IconContext.Provider> 
+                    </Button>
+                </Box>
+                <Button component={Link} to="/register" sx={{ marginTop: "15px"}}>
+                    <Typography sx={{ color: "black",  fontSize: "0.9rem"}}>アカウントを持っていませんか？</Typography>
+                    <Typography sx={{ color: "#6c3cb4", fontSize: "0.9rem", fontWeight: "600" }}>新規作成</Typography>
+                </Button>
+            </Box>
         </>
     )
 }
