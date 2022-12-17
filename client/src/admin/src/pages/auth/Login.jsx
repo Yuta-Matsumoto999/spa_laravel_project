@@ -3,7 +3,7 @@ import { Box, Button, TextField, ThemeProvider, Typography } from '@mui/material
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import authApi from '../api/authApi';
+import authApi from '../../api/authApi';
 import { SocialIcon } from 'react-social-icons';
 import { FaFacebookSquare, FaTwitterSquare, FaLine, FaGoogle } from "react-icons/fa";
 import { IconContext } from 'react-icons';
@@ -120,7 +120,7 @@ const Login = () => {
                 Sign In
             </LoadingButton>
             <Box sx={{ textAlign: "center" }}>
-                <Button component={Link} to="/register" sx={{ marginTop: "10px" }}>
+                <Button component={Link} to="/reset-password" sx={{ marginTop: "10px" }}>
                     <Typography sx={{ color: "#6c3cb4", fontSize: "0.9rem", fontWeight: "600" }}>パスワードをお忘れですか？</Typography>
                 </Button>
             </Box>

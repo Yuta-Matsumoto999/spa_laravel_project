@@ -3,9 +3,7 @@ import { Box, Button, TextField, Select, MenuItem, Typography } from '@mui/mater
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import authApi from '../api/authApi';
-import prefectureReference from '../utils/validation/prefectureReference';
-import axios from 'axios';
+import authApi from '../../api/authApi';
 
 const Register = () => {
     const navigate = useNavigate();

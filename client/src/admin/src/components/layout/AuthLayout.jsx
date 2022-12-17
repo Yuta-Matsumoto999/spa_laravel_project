@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Container, display, flexbox, height, maxHeight, minWidth } from '@mui/system';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Container } from '@mui/system';
+import { Box, Button, Typography } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axiosClient from '../../api/axiosClient/axiosClient';
