@@ -22,6 +22,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/forget-password', [ForgotPasswordController::class, 'sendResetLinkEmail']);
+Route::post("/reset-password", [ResetPasswordController::class, 'resetPassword']);
 
 // 認証済み管理者の判別
 Route::middleware('auth:admins')->get('/authenticate-check', function (Request $request) {
