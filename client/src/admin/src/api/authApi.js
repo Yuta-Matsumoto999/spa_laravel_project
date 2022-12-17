@@ -6,6 +6,7 @@ const authApi = {
     login: (params) => axiosClient.post("api/admin/v1/login", params),
     authenticateCheck: () => axiosClient.get("api/admin/v1/authenticate-check"),
     logout: () => axiosClient.post("api/admin/v1/logout"),
+    sendResetLink: (params) => axiosClient.post("api/admin/v1/forget-password", params)
 }
 
 export default authApi;
