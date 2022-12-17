@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
-import { Box, Button, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { LoadingButton } from "@mui/lab";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import authApi from '../../api/authApi';
-import { SocialIcon } from 'react-social-icons';
 import { FaFacebookSquare, FaTwitterSquare, FaLine, FaGoogle } from "react-icons/fa";
 import { IconContext } from 'react-icons';
-import { color } from '@mui/system';
-import { purple } from '@mui/material/colors';
 
 const Login = () => {
     const navigate = useNavigate();

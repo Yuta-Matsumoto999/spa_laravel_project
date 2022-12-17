@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { Container } from '@mui/system';
 import { Box, Button, Typography } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import axiosClient from '../../api/axiosClient/axiosClient';
 import authApi from '../../api/authApi';
 
 const AuthLayout = () => {
