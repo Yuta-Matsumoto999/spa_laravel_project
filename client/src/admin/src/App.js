@@ -10,6 +10,8 @@ import Register from './pages/auth/Register';
 import Dashboard from './pages/Dashboard';
 import PasswordReset from './pages/auth/PasswordReset';
 import SendedResetLink from './pages/auth/SendedResetLink';
+import ResetPasswordForm from './pages/auth/ResetPasswordForm';
+import CompleteResetPassword from './pages/auth/CompleteResetPassword';
 
 function App() {
   const Theme = createTheme({
@@ -44,6 +46,8 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="/reset-password" element={<PasswordReset />} />
             <Route path='/sended-reset-link' element={<SendedResetLink />} />
+            <Route path='/reset-password-form' element={<ResetPasswordForm />} />
+            <Route path='/complete-reset-password' element={<CompleteResetPassword />} />
           </Route>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Dashboard />} />
