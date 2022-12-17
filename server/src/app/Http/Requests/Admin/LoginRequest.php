@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:' . self::PASSWORD_MIN_LENGTH],
+            'password' => ['required', 'min:8' . self::PASSWORD_MIN_LENGTH],
         ];
     }
 }
