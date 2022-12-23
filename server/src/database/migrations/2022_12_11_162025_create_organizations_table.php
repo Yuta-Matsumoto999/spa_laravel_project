@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admin_organization', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('admin_id')->constrained();
-            $table->foreignId('organization_id')->constrained();
+            $table->string('organization_name');
+            $table->string('organization_zip_code')->nullable();
+            $table->string('organization_prefecture')->nullable();
+            $table->string('organization_city')->nullable();
+            $table->string('organization_address')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_organization');
+        Schema::dropIfExists('organizations');
     }
 };
