@@ -13,12 +13,14 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPassword_confirmation] = useState("");
+    const [organization_name, setOrganization_name] = useState("");
 
     // validation error message
     const [nameValidateErr, setNameValidateErr] = useState("");
     const [emailValidateErr, setEmailValidateErr] = useState("");
     const [passwordValidateErr, setPasswordValidateErr] = useState("");
     const [passwordConfirmationValidateErr, setPasswordConfirmationValidateErr] = useState("");
+    const [organizationNameValidateErr, setOrganizationNameValidateErr] = useState("");
 
     const [loading, setLoading] = useState(false)
     
@@ -104,6 +106,27 @@ const Register = () => {
         }
     }
 
+    // organization_name input
+    const handleOrganizationName = (e) => {
+        const newOrganizationName = e.target.value;
+        setOrganizationNameValidateErr("");
+
+        if(newOrganizationName === "") {
+            setOrganizationNameValidateErr("組織名を入力してください。")
+        }
+
+        setOrganization_name(newOrganizationName);
+    }
+
+    const onFocusOrganizationName = (e) => {
+        const organizationNameValue = e.target.value;
+        setOrganizationNameValidateErr("");
+
+        if(organizationNameValue === "") {
+            setOrganizationNameValidateErr("組織名を入力してください")
+        }
+    }
+
 
     const register = async (e) => {
         e.preventDefault();
@@ -115,6 +138,7 @@ const Register = () => {
         setEmailValidateErr("")
         setPasswordValidateErr("")
         setPasswordConfirmationValidateErr("")
+        setOrganizationNameValidateErr("");
 
         const accessRegisterApi = async () => {
             try{
@@ -123,6 +147,7 @@ const Register = () => {
                     email,
                     password,
                     password_confirmation,
+                    organization_name
                 })
 
                 if(user) {
@@ -150,6 +175,10 @@ const Register = () => {
                             setPasswordValidateErr(error.password[0]);
                         }
                     }
+
+                    if(error.organization_name) {
+                        setOrganizationNameValidateErr(error.organization_name[0]);
+                    }
                 })
             }
         }
@@ -166,6 +195,21 @@ const Register = () => {
         <>
         <Typography sx={{ marginBottom: "20px", fontWeight: "800", fontSize: "1.4rem" }}>Sign Up</Typography>
         <Box component="form" onSubmit={register} noValidate>
+            <TextField 
+                fullWidth
+                onChange={handleOrganizationName}
+                onFocus={onFocusOrganizationName}
+                value={organization_name}
+                id="organization_name" 
+                label="組織名"
+                margin="normal" 
+                name="organization_name"
+                required
+                helperText={organizationNameValidateErr}
+                error={organizationNameValidateErr !== ""}
+                disabled={loading}
+            />
+            
             <TextField 
                 fullWidth
                 onChange={handleName}
