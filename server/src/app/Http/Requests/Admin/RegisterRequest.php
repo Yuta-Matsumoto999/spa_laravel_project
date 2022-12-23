@@ -33,10 +33,6 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'email', 'unique:admins', 'max:' . self::STRING_MAX_LENGTH],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'organization_name' => ['required',  'max:' . self::STRING_MAX_LENGTH],
-            'organization_address_number' => ['required', new HyphenInclude, 'min:7', 'max:7'],
-            'organization_prefecture' => ['required', new PrefectureMatch],
-            'organization_city' => ['required', 'max:' . self::STRING_MAX_LENGTH],
-            'organization_address' => ['required', 'max:' . self::STRING_MAX_LENGTH]
         ];
     }
 }

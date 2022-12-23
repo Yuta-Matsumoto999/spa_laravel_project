@@ -20,6 +20,7 @@ class Admin extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'organization_id',
         'name',
         'email',
         'password',
@@ -44,9 +45,9 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function organization()
+    public function organizations()
     {
-        return $this->belongsToMany(Organization::class);
+        return $this->belongsTo(Organization::class);
     }
 
     public function sendPasswordResetNotification($token): void

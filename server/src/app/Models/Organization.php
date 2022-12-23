@@ -11,7 +11,7 @@ class Organization extends Model
 
     protected $fillable = [
         'organization_name',
-        'organization_address_number',
+        'organization_zip_code',
         'organization_prefecture',
         'organization_city',
         'organization_address'
@@ -19,6 +19,6 @@ class Organization extends Model
 
     public function admin()
     {
-        return $this->belongsToMany(Admin::class);
+        return $this->hasMany(Admin::class);
     }
 }

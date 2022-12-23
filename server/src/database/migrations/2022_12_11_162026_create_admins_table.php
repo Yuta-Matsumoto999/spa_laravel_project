@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('organization_id')->nullable()->constrained();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
